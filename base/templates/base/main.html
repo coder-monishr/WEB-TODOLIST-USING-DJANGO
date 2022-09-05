@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="This is to do list implemented using Django by MONISH RAO for his computer science project 2021-2022 12th grade">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>To Do Items</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            padding-top: 50px;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        a,
+        p {
+            color: #4b5156
+        }
+
+        a {
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+            box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+        }
+
+        input {
+            outline: none;
+            border: none;
+        }
+
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px 5px 0 0;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            border-radius: 0px;
+            
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .header-bar a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .task-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            border-top: 1px solid #dfe4ea;
+            overflow: normal;
+        }
+
+        .task-title {
+            display: flex;
+            padding: 20px;
+        }
+
+        .task-title a {
+            text-decoration: none;
+            color: #4b5156;
+            margin-left: 10px;
+        }
+        .task-complete-icon {
+            height: 20px;
+            width: 20px;
+            background-color: rgb(105, 192, 105);
+            border-radius: 50%;
+        }
+        .task-incomplete-icon {
+            height: 20px;
+            width: 20px;
+            background-color: rgb(218, 218, 218);
+            border-radius: 50%;
+        }
+        .delete-link {
+            text-decoration: none;
+            font-weight: 900;
+            color: #cf4949;
+            font-size: 25px;
+            line-height: 0;
+            padding: 20px 0px;
+        }         
+        #add-link {
+            color: #EB796F;
+            text-decoration: none;
+            font-size: 42px;
+            text-shadow: 1px 1px #81413b;
+        }
+        #search-add-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }          
+        input[type=text],
+        input[type=password],
+        textarea {
+            border: 1px solid #EB796F;
+            border-radius: 5px;
+            padding: 10px;
+            width: 99%;
+        }
+        label {
+            padding-top: 10px !important;
+            display: block;
+        }                    
+        .button {
+            padding: 15px 20px;
+            font-size: 15px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 0px;
+            border-radius: 15px;
+            color: #fff;
+            box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 rgb(226, 85, 116);
+            -webkit-transition: all 150ms ease-in-out;
+            transition: all 150ms ease-in-out;
+            }    
+        .button:hover {
+            box-shadow: 0 0 10px 0 #206fa3 inset, 0 0 10px 4px #fff;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .login-btn {
+            padding: 15px 20px;
+            font-size: 15px;
+            font-weight: 1000;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 0px;
+            border-radius: 15px;
+            color: #fff;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .login-btn:hover {
+            background: linear-gradient(-45deg, #a6d425, #da3f7a, #1eeed2, #e64bc4e8);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }                   
+        .animated-word {
+            font-family: Helvetica;
+            letter-spacing: 0.4em;
+            font-weight: 200;
+            font-size: 18px;
+            text-align: center;
+            color: #202125;
+            cursor: pointer;
+            max-width: 600px; 
+            width: 100%; 
+            outline: 3px solid;
+            outline-color: rgba(71, 126, 232,0.5);
+            outline-offset: 70px;
+            transition: all 600ms cubic-bezier(0.2, 0, 0, 0.8);
+            }
+        .animated-word:hover {
+            color: rgba(71, 126, 232, 0.7);
+            outline-color: rgba(71, 126, 232, 0);   
+            outline-offset: 300px;
+            }     
+               
+        .card-body {
+            padding: 20px;
+        }
+        </style>
+    </head>
+    <body>        
+        <div class = "container">
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+
+    </body>
+</html>
